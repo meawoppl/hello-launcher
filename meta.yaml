@@ -1,0 +1,58 @@
+package:
+  name: hello-launcher
+  version: "0.0.0"
+
+source:
+  path: .
+
+build:
+  # The build number should be incremented for new builds of the same version
+  number: 0       # (defaults to 0)
+
+  entry_points:
+    - sayhello = hello:say_hello
+
+  # Used instead of build.sh or bld.bat. For short build scripts, this can
+  # be more convenient. You may need to use selectors (see below) to use
+  # different scripts for different platforms.
+  script: python setup.py install
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+
+test:
+  # included automatically.
+  requires:
+    - nose
+  # commands we want to make sure they work, which are expected to get
+  # installed by the package
+  commands:
+    - sayhello
+
+  imports:
+    - bsdiff4
+
+about:
+  home: https://github.com/meawoppl/hello-launcher
+  license: BSD
+  summary: Demo script for the launcher.
+
+app:
+  # The command that is called to launch the app
+  entry: sayhello
+  # Icon file contained in the recipe
+  icon: smile.png
+  summary: Laucher testing.
+  # If own_environment is true, installing the app through the launcher
+  # will install into its own environment. The default is false.
+  own_environment: true
