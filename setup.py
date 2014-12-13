@@ -14,5 +14,5 @@ setup(
     license="BSD",
     url="http://www.github.com/meawoppl/hello-launcher",
     packages=['hello'],
-    long_description=read('README')
+    long_description=read('README.md')
 )
